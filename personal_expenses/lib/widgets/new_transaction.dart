@@ -40,6 +40,6 @@ class NewTransaction extends StatelessWidget {
           ],
         ),
       ),
-    )
+    );
   }
 }
