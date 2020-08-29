@@ -11,7 +11,21 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-        child: ListView.builder(
+        child: transactions.isEmpty
+            ? Column(children: <Widget>[
+                Text('No Transactions',
+                  style: Theme.of(context).textTheme.title,
+                ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 200,
+                child: Image.asset('assets/images/waiting.png',
+                    fit: BoxFit.cover),
+              ),
+        ],
+        ) : ListView.builder(
           itemBuilder: (ctx, index) {
             return Card(
                 child: Row(
@@ -22,8 +36,8 @@ class TransactionList extends StatelessWidget {
                         '\$${transactions[index].amount.toStringAsFixed(2)}',
                         style: TextStyle(
                           fontWeight:  FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.deepPurple,
+                          fontSize: 15,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                       margin: EdgeInsets.symmetric(
@@ -33,7 +47,7 @@ class TransactionList extends StatelessWidget {
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 2,
-                          color: Colors.deepPurple,
+                          color: Theme.of(context).primaryColor ,
                         ),
                       ),
                       padding: EdgeInsets.all(8),
@@ -43,18 +57,11 @@ class TransactionList extends StatelessWidget {
                       children: [
                         Text(
                           transactions[index].title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: Theme.of(context).textTheme.title,
                         ),
                         Text(
                           DateFormat.yMMMd().format(transactions[index].date),
-                          style: TextStyle(
-                            fontWeight:  FontWeight.bold,
-                            fontSize: 12,
-                            color: Colors.grey,
-                          ),
+                          style: Theme.of(context).textTheme.subtitle2,
                         ),
                       ],
                     )
