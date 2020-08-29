@@ -7,5 +7,6 @@ class Chart extends StatelessWidget {
       elevation: 6,
         margin: EdgeInsets.all(10),
     );
+
   }
 }
